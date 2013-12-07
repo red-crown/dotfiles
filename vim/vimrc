@@ -96,9 +96,9 @@ set formatoptions+=l           " don't breal long lines that were already there
 " -------------------------------------------------------------------
 " TAB STUFF
 " -------------------------------------------------------------------
-set tabstop=2                  " 2 spaces for a tab
-set shiftwidth=2               " 2 spaces for autoindenting
-set softtabstop=2              " when <BS>, pretend a tab is removed even if spaces
+set tabstop=4                  " 2 spaces for a tab
+set shiftwidth=4               " 2 spaces for autoindenting
+set softtabstop=4              " when <BS>, pretend a tab is removed even if spaces
 set expandtab                  " expand tabs to spaces (overloadable by file type)
 
 
