@@ -1,52 +1,34 @@
 #!/bin/sh
 
-DOTFILEDIR=dotfiles
-DIR=$HOME/.$DOTFILEDIR
-SUBLIMEDIR="${HOME}/Library/Application\\ Support/Sublime\\ Text\\ 3/Packages"
-
-FILES="bash git sublime-text vim"
-
-echo "Installing dotfiles"
-if [ -d $DIR ]; then
-    echo "backing up directory ..."
-    [ -d $HOME/$DOTFILEDIR.bak ] && rm -rf $HOME/$DOTFILEDIR.bak
-    mv $DIR $HOME/$DOTFILEDIR.bak
-fi
-
-mkdir $DIR
-
-for d in $FILES; do
-    echo "copying dotfiles for ${d} ..."
-    cp -r ./$d $DIR
-done
-
+DOTFILEDIR=.dotfiles
+DIR=$HOME/$DOTFILEDIR
 
 # ---------------------------------------------
 # BASH
 # ---------------------------------------------
 echo "Linking Bash files"
-ln -s  $DIR/bash/bash_profile  $HOME/.bash_profile > /dev/null
-ln -s  $DIR/bash/bashrc        $HOME/.bashrc > /dev/null
+ln -s  $DIR/bash/bash_profile  $HOME/.bash_profile
+ln -s  $DIR/bash/bashrc        $HOME/.bashrc
 
 
 # ---------------------------------------------
 # GIT
 # ---------------------------------------------
 echo "Linking Git files ..."
-ln -s  $DIR/git/gitconfig  $HOME/.gitconfig > /dev/null
+ln -s  $DIR/git/gitconfig  $HOME/.gitconfig
 
 # ---------------------------------------------
 # VIM
 # ---------------------------------------------
 echo "Linking Vim files ..."
-ln -s  $DIR/vim        $HOME/.vim > /dev/null
-ln -s  $DIR/vim/vimrc  $HOME/.vimrc > /dev/null
+ln -s  $DIR/vim        $HOME/.vim
+ln -s  $DIR/vim/vimrc  $HOME/.vimrc
 
 if [ -d $DIR/vim/bundle/vundle ]; then
     echo "Vundle detected ..."
 else
     echo "Installing vundle ..."
-    git clone https://github.com/gmarik/vundle.git $DIR/vim/bundle/vundle > /dev/null
+    git clone https://github.com/gmarik/vundle.git $DIR/vim/bundle/vundle
 fi
 
 vim +Bundleinstall +qall
