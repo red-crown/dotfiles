@@ -1,0 +1,249 @@
+" -------------------------------------------------------------------
+" .vimrc
+" Maintained by: Matthew Strickland
+" matthew@redcrown.co
+" http://redcrown.co
+" -------------------------------------------------------------------
+" -------------------------------------------------------------------
+
+
+" -------------------------------------------------------------------
+" FORGET COMPATIBILITY WITH VI. WHO CARES?
+" -------------------------------------------------------------------
+set nocompatible
+
+
+" -------------------------------------------------------------------
+" GET SID PREFIX OF VIMRC (SEE :H <SID>)
+" -------------------------------------------------------------------
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_')
+endfunction
+
+
+" -------------------------------------------------------------------
+" SETUP VUNDLE TO MANAGE PLUGINS
+" -------------------------------------------------------------------
+if filereadable(expand("~/.vim/config/vundle.conf"))
+  source ~/.vim/config/vundle.conf
+endif
+
+filetype plugin indent on          " enable plugins, detections, indenting
+syntax on
+
+
+" -------------------------------------------------------------------
+" COLOR SCHEME AND APPEARANCE
+" -------------------------------------------------------------------
+set background=dark
+silent! colorscheme molokai
+set t_Co=256
+set nonu
+
+
+" -------------------------------------------------------------------
+" CHANGE LEADER KEY
+" -------------------------------------------------------------------
+:let mapleader = ","
+
+
+" -------------------------------------------------------------------
+" TIME OUT MAPPINGS FOR MAPPINGS AND KEY CODES
+" -------------------------------------------------------------------
+set timeout timeoutlen=1000 ttimeoutlen=500
+
+
+" -------------------------------------------------------------------
+" BASIC OPTIONS
+" -------------------------------------------------------------------
+set laststatus=2               " always show the status line
+set cmdheight=2                " and use a two-linee tall status line
+set showcmd                    " show the command
+set noshowmode                 " don't show the mode, vim-airline will do that
+set autoindent                 " turn it on
+set smartindent                " does the right thing in programs
+set linespace=3                " prefer a slightly higher line height
+set wrap                       " use line wrapping
+set textwidth=79               " at column 79
+set ruler                      " display current cursor position
+set list                       " show invisible characters
+set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:␣,extends:❯,precedes:❮
+set showmatch                  " show matching brackets
+set relativenumber             " use relative line numbers
+set number                     " except for the current line - absolute number there
+set backspace=indent,eol,start " make backspace behave
+set mousehide                  " hide mouse when typing
+set foldenable                 " enable code folding
+set magic
+set hid
+set t_vb=
+set tm=500
+set history=1000
+set ffs=unix,mac,dos           " default file types
+set autoread                   " automatically update file when editted outside of Vim
+
+" setup automatic text formatting/wrapping
+set formatoptions=
+set formatoptions-=t           " don't autowrap text
+set formatoptions+=c           " do autowrap comments
+set formatoptions+=r           " automatically continue comments
+set formatoptions+=o           " automatically continue comments when hitting 'o' or 'O'
+set formatoptions+=q           " allow formatting of comments with 'gq'
+set formatoptions+=n           " recognize numbered lists
+set formatoptions+=l           " don't breal long lines that were already there
+
+
+" -------------------------------------------------------------------
+" TAB STUFF
+" -------------------------------------------------------------------
+set tabstop=2                  " 2 spaces for a tab
+set shiftwidth=2               " 2 spaces for autoindenting
+set softtabstop=2              " when <BS>, pretend a tab is removed even if spaces
+set expandtab                  " expand tabs to spaces (overloadable by file type)
+
+
+" -------------------------------------------------------------------
+" NAVIGATION AND MOVEMENT
+" -------------------------------------------------------------------
+imap jk <esc>
+nnoremap ; :
+
+" disable up, down arrows
+map <up> <nop>
+map <down> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" map right, left arrows to chaning buffers
+map <right> :bn<cr>
+map <left>  :bp<cr>
+
+" Use <C>hjkl to switch between splits
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+
+" -------------------------------------------------------------------
+" ENCODING
+" -------------------------------------------------------------------
+set termencoding=utf-8 " make it look nice
+set encoding=utf-8
+
+
+" -------------------------------------------------------------------
+" FILE HANDLING
+" -------------------------------------------------------------------
+set autowrite           " write out old file when switching between files
+set autoread            " reload files changed on disk, i.e. via `git checkout`
+set hidden              " switch between buffers without saving
+au FocusLost * :wa      " save file when Vim loses focus
+
+" don't create backup swap files
+set nobackup
+set noswapfile
+
+" don't save any files when using Vim for editing crontab
+if $VIM_CRONTAB == "true"
+    set nobackup
+    set nowritebackup
+endif
+
+
+" -------------------------------------------------------------------
+" MISCELLANEOUS
+" -------------------------------------------------------------------
+
+" toggle listchars on or off
+noremap <Leader>i :set list!<CR>
+
+" Paste mode to prevent autoindention of pasted lines
+set pastetoggle=<F2>
+
+" yank and paste with the system cliplboard
+set clipboard=unnamed
+
+" show cursorline only in active window
+if has("autocmd")
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter * set cursorline
+endif
+
+" strip whitespace from all lines in file
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+" reindent entire file
+nmap _= :call Preserve("normal gg=G")<CR>
+
+" resize splits when resizing the vim window
+if has("autocmd")
+    autocmd VimResized * exe "normal! \<c-w>="
+endif
+
+" -------------------------------------------------------------------
+" SEARCHING
+" -------------------------------------------------------------------
+set incsearch                            " use incremental searching
+set hlsearch                             " highlight search results
+set ignorecase                           " ignore case when searching
+set smartcase                            " only ignore case if all lower-case
+
+" saner regexp searching
+nnoremap / /\v
+vnoremap / /\v
+
+" remove search highlighting with <F3>
+nnoremap <silent> <leader>/ :noh1search<CR>
+
+" -------------------------------------------------------------------
+" SPLITS
+" -------------------------------------------------------------------
+nnoremap <leader>v <C-w>v<C-w>l     " open a vertical split and switch
+nnoremap <leader>h <C-w>s<C-w>j     " open a horizontal split and switch
+
+
+" -------------------------------------------------------------------
+" COMMAND LINE COMPLETION
+" -------------------------------------------------------------------
+set wildmenu                    " navigate <left> & <right> through completion lists
+set wildmode=longest,list,full  " allows expansion of items
+set completeopt=menu,menuone,longest
+set pumheight=15
+
+
+" -------------------------------------------------------------------
+" FILETYPE CONFIGURATION
+" -------------------------------------------------------------------
+if filereadable(expand("~/.vim/config/files.conf"))
+  source ~/.vim/config/files.conf
+endif
+
+
+" -------------------------------------------------------------------
+" BUNDLE SPECIFIC CONFIGURATION
+" -------------------------------------------------------------------
+if filereadable(expand("~/.vim/config/bundles.conf"))
+  source ~/.dotfiles/vim/config/bundles.conf
+endif
+
+
+" VIMRC SHORTCUTS
+" -------------------------------------------------------------------
+" open vimrc in new tab
+nmap <leader>ev :tabedit $MYVIMRC<cr>
+
+" automatically source .vimrc when it is saved
+if has("autocmd")
+    autocmd! bufwritepost .vimrc source $MYVIMRC
+endif
+
+" reload .vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+
+" -------------------------------------------------------------------
+" END
+" -------------------------------------------------------------------

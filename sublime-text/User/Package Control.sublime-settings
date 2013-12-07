@@ -1,0 +1,23 @@
+{
+	"installed_packages":
+	[
+		"CodeFormatter",
+		"DocBlockr",
+		"EditorConfig",
+		"Emmet",
+		"ERB Snippets",
+		"Goto Documentation",
+		"Highlight",
+		"Laravel 4 Artisan",
+		"Laravel 4 Facades",
+		"Phpcs",
+		"PhpNamespace",
+		"Quick File Creator",
+		"SCSS",
+		"Shell Turtlestein",
+		"SublimeCodeIntel",
+		"SublimeGit",
+		"sublimelint",
+		"Theme - Phoenix"
+	]
+}

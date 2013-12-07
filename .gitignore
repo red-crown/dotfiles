@@ -1,0 +1,10 @@
+# VIM ignores
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Ignore vim/bundles
+vim/bundle
+

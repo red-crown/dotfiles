@@ -1,0 +1,41 @@
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias brc="source $HOME/.bashrc"
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Navigations
+alias nce='snav ce'
+alias nc='snav c'
+alias nm='snav m'
+alias ncev='snav cev'
+alias ncel='snav cel'
+alias nceld='snav celd'
+alias nr='snav r'
+
+# Directory Navigations
+alias ..="cd ../"
+alias sites="cd $HOME/Sites"
+alias desk="cd $HOME/Desktop"
+
+# PHP Stuff
+alias loga="tail -f /var/log/apache2/error_log"
+alias plint="php -l $1"
+
+alias web="cd /var/www"
+alias sugar="cd $HOME/Sites/sugarcrm"
+
+alias tmux="TERM=screen-256color tmux"
+alias tp="t projectview"
+alias validatepkg='~/Dev/util/SugarManifestValidator/validate.php'
+alias te="tail -f /var/log/apache2/error_log"
+alias 67='cd $HOME/Sites/SugarPro-6.7.1-clean'
+alias repair='sudo repair.php'
+alias sed='/usr/local/bin/gsed'
+
+alias crontab="VIM_CRONTAB=true crontab"
+alias fbsg="$HOME/Work/faybus-sugartools/console"
+

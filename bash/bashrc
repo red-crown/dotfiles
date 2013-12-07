@@ -1,0 +1,39 @@
+# -------------------------------------------------------------------
+# .bashrc
+# -------------------------------------------------------------------
+
+DOTFILESDIR=.dotfiles
+BASHDIR=$HOME/$DOTFILESDIR/bash
+
+
+# -------------------------------------------------------------------
+# SOURCE GLOBAL DEFINITIONS AND BASH FILES
+# -------------------------------------------------------------------
+[ -f /etc/bashrc ] && source /etc/bashrc
+[ -f $BASHDIR/aliases ] && source $BASHDIR/aliases
+
+
+# -------------------------------------------------------------------
+# BASH AND GIT COMPLETION
+# -------------------------------------------------------------------
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+[ -f /usr/local/etc/git-completion.bash ] && source /usr/local/etc/git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=1
+
+
+# -------------------------------------------------------------------
+# COMMAND LINE PROMPT
+# -------------------------------------------------------------------
+[ -f $BASHDIR/prompt ] && source $BASHDIR/prompt
+
+
+# -------------------------------------------------------------------
+# BASH FUNCTIONS
+# -------------------------------------------------------------------
+[ -f $BASHDIR/functions ] && source $BASHDIR/functions
+
+# -------------------------------------------------------------------
+# ENVIRONMENT CONFIGURATION
+# -------------------------------------------------------------------
+[ -f $BASHDIR/config ] && source $BASHDIR/config
+

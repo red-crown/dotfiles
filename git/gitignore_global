@@ -1,0 +1,28 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotligh-V100
+.Trashes
+
+.*.s[a-w][a-z]
+.un~
+Session.vim
+.netrwhist
+*~
+
+*.project
+*.idea
+*.swp
+
+*.log
+
+*.iml
+*.ipr
+*.iws
+.idea/
