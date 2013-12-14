@@ -54,8 +54,6 @@ fi
 
 export PATH
 
-# following line added by RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/script/rvm"
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob

@@ -17,7 +17,7 @@ BASHDIR=$HOME/$DOTFILESDIR/bash
 # BASH AND GIT COMPLETION
 # -------------------------------------------------------------------
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-[ -f /usr/local/etc/git-completion.bash ] && source /usr/local/etc/git-completion.bash
+[ -f $HOME/.git-completion.bash ] && source $HOME/.git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=1
 
 
@@ -36,4 +36,3 @@ GIT_PS1_SHOWDIRTYSTATE=1
 # ENVIRONMENT CONFIGURATION
 # -------------------------------------------------------------------
 [ -f $BASHDIR/config ] && source $BASHDIR/config
-
