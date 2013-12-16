@@ -21,6 +21,13 @@ Vundle managed Vim bundles maybe updated from the command line via
 
     $ vim +BundleInstall +qall
 
+You can remove a bundle simply by removing it from the vimrc.
+To remove the directory completely just run:
+
+    $ BundleClean
+
+from inside VIM.
+
 # Setup
 You can setup these settings by either running the included installation script
 or by installing each manually.
