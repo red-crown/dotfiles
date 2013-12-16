@@ -36,3 +36,5 @@ GIT_PS1_SHOWDIRTYSTATE=1
 # ENVIRONMENT CONFIGURATION
 # -------------------------------------------------------------------
 [ -f $BASHDIR/config ] && source $BASHDIR/config
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

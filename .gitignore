@@ -8,3 +8,6 @@ Session.vim
 # Ignore vim/bundles
 vim/bundle
 
+vim/undodir/
+vim/backup/
+

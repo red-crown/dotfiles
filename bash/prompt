@@ -11,7 +11,7 @@ MAGENTA='\[\e[0;35m\]'
 WHITE='\[\e[0m\]'
 IMPORTANT='\[\e[4;0m\]'
 GREY='\[\e[1;30m\]'
- 
+
 function parse_git_branch {
   git rev-parse --git-dir &> /dev/null
   git_status="$(git status 2> /dev/null)"
@@ -45,10 +45,10 @@ function parse_git_branch {
     echo -e " $ "
   fi
 }
- 
+
 function prompt_func() {
     prompt="[${GREEN}\h${WHITE}:${BLUE}\w${WHITE}]$(parse_git_branch)"
     PS1="$prompt${COLOR_NONE}"
 }
- 
+
 PROMPT_COMMAND=prompt_func

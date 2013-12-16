@@ -1,0 +1,6 @@
+if filereadable(expand("~/.vimrc.before.local"))
+    source ~/.vimrc.before.local
+endif
+
+" Enable powerline symbols
+let g:airline_powerline_fonts = 1
