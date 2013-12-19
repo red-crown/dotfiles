@@ -55,13 +55,13 @@ colorscheme molokai
 " -------------------------------------------------------------------
 " CHANGE LEADER KEY
 " -------------------------------------------------------------------
-:let mapleader = ","
+let mapleader = ","
 
 
 " -------------------------------------------------------------------
 " TIME OUT MAPPINGS FOR MAPPINGS AND KEY CODES
 " -------------------------------------------------------------------
-set timeout timeoutlen=1000 ttimeoutlen=500
+set timeout timeoutlen=1000 ttimeoutlen=800
 
 
 " -------------------------------------------------------------------
@@ -205,15 +205,6 @@ hi PmenuSel ctermfg=darkcyan ctermbg=black
 hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
 hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-"inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-"inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-"inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-"inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-"inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-" Automatically open and close the popup menu / preview window
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menu,preview,longest
 
 " Enable omni completion
@@ -229,6 +220,15 @@ autocmd FileType ruby          setlocal omnifunc=rubycomplete#Complete
 " SuperTab
 " -------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "context"
+
+
+" -------------------------------------------------------------------
+" Tabularize
+" -------------------------------------------------------------------
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
 
 
 " -------------------------------------------------------------------
@@ -252,7 +252,7 @@ let g:ctrlp_prompt_mappings = {
 " -------------------------------------------------------------------
 " VIM-AIRLINE
 " -------------------------------------------------------------------
-let g:airline_theme                                     = 'lucius' " badwolf, murmur, luna, tomorrow, powerlineish, lucius
+let g:airline_theme                                     = 'murmur' " badwolf, murmur, luna, tomorrow, powerlineish, lucius
 let g:airline_enable_branch                             = 1
 let g:airline_detect_paste                              = 1
 let g:airline#extensions#bufferline#enabled             = 1
@@ -454,29 +454,8 @@ if has("autocmd")
 endif
 
 
-" -------------------------------------------------------------------
-" TOGGLE VEXPLORE WITH CTRL-E
-" -------------------------------------------------------------------
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-
-map <silent> <leader>nt :call ToggleVExplorer()<CR>
+"map <silent> <leader>nt :call ToggleVExplorer()<CR>
+map <silent> <leader>nt :NERDTreeToggle<CR>
 
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.

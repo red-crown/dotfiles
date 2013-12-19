@@ -27,13 +27,9 @@ if [ -d /opt/local/sbin ]; then
     PATH="/opt/local/sbin:${PATH}"
 fi
 
-if [ -d /usr/local/share/npm/bin ]; then
-    PATH="/usr/local/share/npm/bin:${PATH}"
-fi
-
-if [ -d ~/local/bin ]; then
-    PATH="~/local/bin:${PATH}"
-fi
+#if [ -d /usr/local/share/npm/bin ]; then
+    #PATH="/usr/local/share/npm/bin:${PATH}"
+#fi
 
 if [ -d ~/local/lib/redis-2.6.16/src ]; then
     PATH="~/local/lib/redis-2.6.16/src:${PATH}"
@@ -50,6 +46,15 @@ fi
 
 if [ -d /usr/local/bin ]; then
     PATH="/usr/local/bin:${PATH}"
+fi
+
+if [ -d /usr/local/mysql/bin ]; then
+    PATH="/usr/local/mysql/bin:${PATH}"
+fi
+
+
+if [ -d $HOME/local/bin ]; then
+    PATH="${HOME}/local/bin:${PATH}"
 fi
 
 export PATH
