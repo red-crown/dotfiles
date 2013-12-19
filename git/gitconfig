@@ -50,9 +50,6 @@
     branches = branch -a
     remotes = remote -v
 
-[push]
-    default = simple
-
 [url "git://github.com/"]
     insteadOf = gh:
 [url "git@github.com:"]
