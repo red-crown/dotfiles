@@ -54,3 +54,5 @@
     insteadOf = gh:
 [url "git@github.com:"]
     insteadOf = wgh:
+[push]
+	default = simple
