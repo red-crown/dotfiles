@@ -23,20 +23,31 @@ alias sites="cd $HOME/Sites"
 alias desk="cd $HOME/Desktop"
 
 # PHP Stuff
-alias loga="tail -f /var/log/apache2/error_log"
 alias plint="php -l $1"
 
-alias web="cd /var/www"
-alias sugar="cd $HOME/Sites/sugarcrm"
-
 alias tmux="TERM=screen-256color tmux"
-alias tp="t projectview"
-alias validatepkg='~/Dev/util/SugarManifestValidator/validate.php'
-alias te="tail -f /var/log/apache2/error_log"
-alias 67='cd $HOME/Sites/SugarPro-6.7.1-clean'
+
 alias repair='sudo repair.php'
-alias sed='/usr/local/bin/gsed'
+
+if [ -f /usr/local/bin/gsed ]; then
+    alias sed='/usr/local/bin/gsed'
+fi
+
+if [ -f /var/log/apache2/error_log ]
+then
+   alias te="tail -f /var/log/apache2/error_log"
+elif [ -f /var/log/apache2/error.log ]
+then
+   alias te="tail -f /var/log/apache2/error.log"
+fi
 
 alias crontab="VIM_CRONTAB=true crontab"
-alias fbsg="$HOME/Work/faybus-sugartools/console"
+
+if [ -f $HOME/Work/faybus-sugartools/console ]; then
+   alias fbsg="$HOME/Work/faybus-sugartools/console"
+fi
+
+if [ -f $HOME/.bashrc.aliases.local ]; then
+   source "${HOME}/.bashrc.aliases.local"
+fi
 
